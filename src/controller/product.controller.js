@@ -37,7 +37,7 @@ const deleteProduct = async (req, res) => {
       const product = await Product.destroy({ where: { id: id } });
       res.status(200).json(product);
     } catch (err) {
-      res.status(500).json({ message: "Le produit n'a pas été trouvé" });
+      res.status(500).json({ message: "Product not find" });
     }
   };
     

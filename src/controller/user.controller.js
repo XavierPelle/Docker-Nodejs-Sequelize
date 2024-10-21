@@ -29,7 +29,7 @@ const updateUser = async (req, res) => {
       res.status(500).json({ message: "server error the user has not been updated !" });
     }
   };
-  
+
 const deleteUser = async (req, res) => {
     const id = req.params.id;
 
@@ -37,7 +37,7 @@ const deleteUser = async (req, res) => {
       const user = await User.destroy({ where: { id: id } });
       res.status(200).json(user);
     } catch (err) {
-      res.status(500).json({ message: "L'utilisateur n'a pas été trouvé" });
+      res.status(500).json({ message: "user not found" });
     }
   };
 
