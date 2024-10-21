@@ -2,8 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const sequelize = require('./config/database');
-const User = require('./models/User');
-const Product = require('./models/Product');
+import { userRouter } from "./routes/user.route";
+import { productRouter } from "./routes/product.route";
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -22,6 +22,9 @@ sequelize.sync()
 app.get("/", function (req, res) {
     res.send("Base route");
 });
+
+app.use("/user", userRouter);
+app.use("/product", productRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
